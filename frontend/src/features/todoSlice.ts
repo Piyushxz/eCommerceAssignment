@@ -8,7 +8,8 @@ const initialState ={
     isCheckoutModalOpen:false,
     cartItems:[],
     filterCategory:'all',
-    showDescriptionModal:{value:false,id:1}
+    showDescriptionModal:{value:false,id:1},
+    isFilterModalOpen:false
 
 }
 
@@ -39,12 +40,15 @@ export const modalSlice = createSlice({
         closeDescriptionModal:(state,action)=>{
             state.showDescriptionModal.value = false;
             state.showDescriptionModal.id = 0
+        },
+        toggleFilterModal:(state,action)=>{
+            state.isFilterModalOpen = !state.isFilterModalOpen
         }
 
 
     }
 } )
 
-export const {toggleModal,openModal,addToCart,filterCard,setFilterCategory,showDescriptionModal,closeDescriptionModal} = modalSlice.actions
+export const {toggleModal,openModal,addToCart,filterCard,setFilterCategory,showDescriptionModal,closeDescriptionModal,toggleFilterModal} = modalSlice.actions
 
 export default modalSlice.reducer

@@ -1,8 +1,11 @@
 import {motion} from "motion/react"
-import { SearchIcon } from "lucide-react";
+import { SearchIcon, SlidersHorizontalIcon } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { toggleFilterModal } from "@/features/todoSlice";
 
 export const Search = () => {
 
+    const dispatch = useDispatch()
 
   return (
     <motion.div 
@@ -12,6 +15,7 @@ export const Search = () => {
     className="w-full pt-24 pb-8">
       <div className="flex justify-center items-center flex-col gap-4">
         <h1 className="font-semibold font-primary tracking-tighter text-lg text-black">Home</h1>
+        <div className="flex gap-2 items-center">
         <div className="relative">
           <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-black" />
           <input
@@ -19,6 +23,12 @@ export const Search = () => {
             placeholder="Search Anything"
           />
         </div>
+        <button onClick={()=>dispatch(toggleFilterModal(true))}
+         className="hover:opacity-70 p-1 rounded-lg border border-black/15">
+            <SlidersHorizontalIcon className="text-black size-8"/>
+        </button>
+        </div>
+
       </div>
     </motion.div>
   );

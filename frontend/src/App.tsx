@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { motion} from "motion/react"
 import { AnimatePresence } from 'framer-motion'
 import { DescriptionModal } from './components/DescriptonModal'
+import { FilterModal } from './components/FilterModal'
 function App() {
   const {loading,allProducts} = getProducts()
 
@@ -15,6 +16,8 @@ function App() {
 
 
   const ismodalOpen = useSelector(state => state.isCheckoutModalOpen);
+  const isFilterModalOpen = useSelector(state => state.isFilterModalOpen);
+
   const isDescriptionmodalOpen = useSelector(state => state. showDescriptionModal.value);
 
 
@@ -27,13 +30,15 @@ function App() {
       ismodalOpen &&
         <CheckoutCard/>
       }
+  {isDescriptionmodalOpen && <DescriptionModal />}
 
+  {
+      isFilterModalOpen && <FilterModal/>
+    }
 
     </AnimatePresence>
 
-    <AnimatePresence >
-  {isDescriptionmodalOpen && <DescriptionModal />}
-</AnimatePresence>
+ 
 
       
       <DashboardNavbar/>
