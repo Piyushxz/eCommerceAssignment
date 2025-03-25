@@ -18,7 +18,7 @@ export const CheckoutCard = () => {
         animate={{ y: 0 }}
         exit={{ y: "100%" }}
         transition={{ type: "spring", stiffness: 200, bounce: 0.3, mass: 0.1 }}
-        className="w-90 h-[600px] border border-black/15 rounded-2xl bg-white flex flex-col"
+        className="w-94 md:w-90 h-[600px] border border-black/15 rounded-2xl bg-white flex flex-col"
       >
         <div className="p-4 flex justify-between items-center border-b border-black/50">
           <h1 className="text-xl text-black tracking-tight font-semibold">Cart</h1>

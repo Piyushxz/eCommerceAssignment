@@ -1,8 +1,8 @@
-import { EyeIcon, HomeIcon, LogOut, ShoppingCartIcon } from "lucide-react"
+import { EyeIcon, HomeIcon, LogOut, ShoppingCartIcon, User, Wallet2Icon } from "lucide-react"
 import {motion} from "motion/react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./DropDownMenu"
 import { useDispatch, useSelector } from "react-redux"
-import { setFilterCategory } from "@/features/todoSlice"
+import { openModal, setFilterCategory } from "@/features/todoSlice"
 export const DashboardNavbar = ()=>{
 
     const items = useSelector(state=>state.cartItems)
@@ -66,7 +66,8 @@ export const DashboardNavbar = ()=>{
                 <p className="tracking-tight text-sm">user@gmail.com</p>
                 <p className="tracking-tight text-sm">My Orders</p>
                 <p className="tracking-tight text-sm">My Account</p>
-                <div className="relative tracking-tight text-sm">
+                <div onClick={()=>dispatch(openModal(true))}
+                 className="relative tracking-tight text-sm">
                     <ShoppingCartIcon className="text-black size-6" aria-label="Shopping Cart" />
                    {items.length >0 && <span className="rounded-full bg-black absolute text-xs text-white px-1.5 top-3 left-4">{items.length}</span>}
                 </div>
@@ -92,7 +93,27 @@ export const DashboardNavbar = ()=>{
             </svg>
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="bg-[#191919] border-gray-600/40 z-100">
+        <DropdownMenuContent className="bg-[#191919] border-gray-600/40 z-100 w-[150px]">
+        <DropdownMenuItem 
+                 className="w-full flex gap-2 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
+                            <User className="size-6 text-inherit"/>
+                            <span className="font-primary font-normal text-md  tracking-tighter text-inherit ">My Account</span>
+                    
+                </DropdownMenuItem>
+
+                <DropdownMenuItem 
+                 className="w-full flex gap-2 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
+                            <Wallet2Icon className="size-6 text-inherit"/>
+                            <span className="font-primary font-normal text-md  tracking-tighter text-inherit ">My Orders</span>
+                    
+                </DropdownMenuItem>
+
+                <DropdownMenuItem onClick={()=>dispatch(openModal(true))}
+                 className="w-full flex gap-2 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
+                            <ShoppingCartIcon className="size-6 text-inherit"/>
+                            <span className="font-primary font-normal text-md  tracking-tighter text-inherit ">Cart</span>
+                    
+                </DropdownMenuItem>
         <DropdownMenuItem 
      
          className="w-full flex gap-2  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
@@ -100,12 +121,8 @@ export const DashboardNavbar = ()=>{
                             <span className="font-primary font-normal text-md  tracking-tighter text-inherit ">Home</span>
                     
           </DropdownMenuItem>
-                <DropdownMenuItem 
-                 className="w-full flex gap-2 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
-                            <EyeIcon className="size-6 text-inherit"/>
-                            <span className="font-primary font-normal text-md  tracking-tighter text-inherit ">Favourite</span>
-                    
-                </DropdownMenuItem>
+
+
                 <DropdownMenuSeparator
                  className="bg-gray-600/30" />
                 <DropdownMenuItem  

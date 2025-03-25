@@ -19,7 +19,7 @@ export const CheckoutCardItem = (props:{
             <img className="h-full w-full object-cover" src={props.img} />
         </div>
         <div className="flex flex-col">
-            <h1 className="tracking-tight">    {props.name}
+            <h1 className="tracking-tight text-sm font-semibold">    {props.name}
             </h1>
             <h1>${props.price}</h1>
             <div className="flex items-center gap-2">
