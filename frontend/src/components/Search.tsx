@@ -1,18 +1,15 @@
 import {motion} from "motion/react"
 import { SearchIcon } from "lucide-react";
-import { getProducts } from "@/hooks/getProducts";
 
 export const Search = () => {
 
-    const {loading,allProducts} = getProducts()
 
-    console.log(loading,allProducts)
   return (
     <motion.div 
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay:0.4,duration:0.4, ease: "easeInOut" }}
-    className="w-full py-24">
+    className="w-full pt-24 pb-8">
       <div className="flex justify-center items-center flex-col gap-4">
         <h1 className="font-semibold font-primary tracking-tighter text-lg text-black">Home</h1>
         <div className="relative">

@@ -1,39 +1,45 @@
 
-import { Plus } from 'lucide-react'
-import './App.css'
+import { Card } from './components/Card'
+import { CheckoutCard } from './components/CheckoutCard'
 import { DashboardNavbar } from './components/DashboardNavbar'
 import { Search } from './components/Search'
-
+import { getProducts } from './hooks/getProducts'
+import { useSelector } from 'react-redux'
+import {motion} from "motion/react"
 function App() {
+  const {loading,allProducts} = getProducts()
+
+  console.log(loading,allProducts)
+
+  const ismodalOpen = useSelector(state => state.isCheckoutModalOpen);
+
+
 
   return (
     <>
+
+      {
+      ismodalOpen &&
+        <CheckoutCard/>
+      }
+      
       <DashboardNavbar/>
       <Search/>
 
     <section className='flex w-full justify-center'>
-    <div className=' flex flex-wrap w-[70vw]'>
-    <div className="w-[200px] h-[200px] border border-black/15 relative">
-  <img 
-    src="https://placeimg.com/640/480/cotton" 
-    alt="Product" 
-    className="w-full h-full object-cover"
-  />
+    <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay:0.4,duration:0.4, ease: "easeInOut" }}
+    className=' flex flex-wrap w-[60vw] gap-6'>
+      {
+        allProducts.map(({title,id,price,images,category})=>(
+                  //@ts-ignore
 
-  <div className="absolute top-2 right-2">
-    <Plus className="text-black" />
-  </div>
-
-  <div className="absolute bottom-2 left-2 font-primary tracking-tight border rounded-2xl bg-white text-black py-1 px-2">
-    Clothes
-  </div>
-  <div className='flex justify-between font-primary'>
-      <h1 className='tracking-tight text-sm'>Majestic Mountain Graphic T-Shirt</h1>
-      <h1 className='tracking-tight text-sm'>$100</h1>
-    </div>
-</div>
-
-    </div>
+          <Card key={id} name={title} cost={price} img={images[0]} category={category.name} />
+        ))
+      }
+    </motion.div>
 
 
 

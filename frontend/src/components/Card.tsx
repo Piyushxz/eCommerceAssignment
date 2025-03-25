@@ -1,19 +1,36 @@
-<div className="w-[200px] h-[200px] border border-black/15 relative">
-<img 
-  src="https://placeimg.com/640/480/cotton" 
-  alt="Product" 
-  className="w-full h-full object-cover"
-/>
 
-<div className="absolute top-2 right-2">
-  <Plus className="text-black" />
-</div>
+import { Plus } from "lucide-react"
+import { useDispatch } from "react-redux"
+import { openModal } from "../../features/todoSlice"
+export const Card = (props:{
+    img:string,
+    name:string,
+    cost:string,
+    category:string
+})=>{
 
-<div className="absolute bottom-2 left-2 font-primary tracking-tight border rounded-2xl bg-white text-black py-1 px-2">
-  Clothes
-</div>
-<div className='flex justify-between font-primary'>
-    <h1 className='tracking-tight text-sm'>Majestic Mountain Graphic T-Shirt</h1>
-    <h1 className='tracking-tight text-sm'>$100</h1>
-  </div>
-</div>
+    const dispatch = useDispatch()
+
+    return(
+                        <div className="w-[200px] h-[200px] border border-black/15 relative">
+                <img 
+                src={props.img}
+                alt="Product" 
+                className="w-full h-full object-cover rounded-lg"
+                />
+
+                <div onClick={()=>dispatch(openModal(true))}
+                className="absolute top-2 right-2 rounded-lg border border-black/15 cursor-pointer ">
+                <Plus className="text-black size-6" />
+                </div>
+
+                <div className="absolute bottom-2 left-2 font-primary tracking-tight border rounded-2xl bg-white text-sm text-black py-1 px-2">
+                {props.category}
+                </div>
+                <div className='flex justify-between font-primary'>
+                    <h1 className='tracking-tight text-md'>{props.name}</h1>
+                    <h1 className='tracking-tight text-md'>${props.cost}</h1>
+                </div>
+                </div>
+    )
+}
