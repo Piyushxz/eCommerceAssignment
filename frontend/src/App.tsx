@@ -5,7 +5,8 @@ import { DashboardNavbar } from './components/DashboardNavbar'
 import { Search } from './components/Search'
 import { getProducts } from './hooks/getProducts'
 import { useSelector } from 'react-redux'
-import {motion} from "motion/react"
+import { motion} from "motion/react"
+import { AnimatePresence } from 'framer-motion'
 function App() {
   const {loading,allProducts} = getProducts()
 
@@ -18,10 +19,13 @@ function App() {
   return (
     <>
 
-      {
+    <AnimatePresence>
+    {
       ismodalOpen &&
         <CheckoutCard/>
       }
+    </AnimatePresence>
+
       
       <DashboardNavbar/>
       <Search/>
@@ -36,7 +40,7 @@ function App() {
         allProducts.map(({title,id,price,images,category})=>(
                   //@ts-ignore
 
-          <Card key={id} name={title} cost={price} img={images[0]} category={category.name} />
+          <Card id={id} key={id} name={title} cost={price} img={images[0]} category={category.name} />
         ))
       }
     </motion.div>

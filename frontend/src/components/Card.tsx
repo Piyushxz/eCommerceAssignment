@@ -1,12 +1,13 @@
 
 import { Plus } from "lucide-react"
 import { useDispatch } from "react-redux"
-import { openModal } from "../../features/todoSlice"
+import { addToCart, openModal } from "../features/todoSlice"
 export const Card = (props:{
     img:string,
     name:string,
     cost:string,
-    category:string
+    category:string,
+    id:string
 })=>{
 
     const dispatch = useDispatch()
@@ -19,7 +20,10 @@ export const Card = (props:{
                 className="w-full h-full object-cover rounded-lg"
                 />
 
-                <div onClick={()=>dispatch(openModal(true))}
+                <div onClick={()=>{dispatch(openModal(true))
+
+                    dispatch(addToCart({props}))
+                }}
                 className="absolute top-2 right-2 rounded-lg border border-black/15 cursor-pointer ">
                 <Plus className="text-black size-6" />
                 </div>
