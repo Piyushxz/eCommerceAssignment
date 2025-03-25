@@ -8,7 +8,7 @@ export const DashboardNavbar = ()=>{
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration:0.4, ease: "easeInOut" }}
-        className="w-full fixed md:relative flex justify-center items-center border-b border-gray-400/30 z-49  py-4"
+        className="w-full fixed  flex justify-center items-center border-b border-gray-400/30 z-49  py-4"
       >
         <div className="w-[95vw] flex justify-between items-center">
 
