@@ -1,13 +1,16 @@
 import { EyeIcon, HomeIcon, LogOut, ShoppingCartIcon } from "lucide-react"
 import {motion} from "motion/react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./DropDownMenu"
+import { useSelector } from "react-redux"
 
 export const DashboardNavbar = ()=>{
+
+    const items = useSelector(state=>state.cartItems)
     return(
         <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration:0.4, ease: "easeInOut" }}
+        transition={{ duration:0.5, ease: "easeInOut" }}
         className="w-full fixed  flex justify-center items-center border-b bg-white border-gray-400/30 z-49  py-4"
       >
         <div className="w-[95vw] flex justify-between items-center">
@@ -25,17 +28,14 @@ export const DashboardNavbar = ()=>{
 
             </div>
             <div className="flex font-primary gap-6 items-center hidden md:flex">
-                <h1 className=" tracking-tight text-sm">user@gmail.com</h1>
-                <h1 className=" tracking-tight text-sm">My Orders</h1>
-                <h1 className=" tracking-tight text-sm">My Account</h1>
-                <div className=" tracking-tight text-sm"><ShoppingCartIcon className="text-black size-5" /></div>
-
-
-
-
-
+                <p className="tracking-tight text-sm">user@gmail.com</p>
+                <p className="tracking-tight text-sm">My Orders</p>
+                <p className="tracking-tight text-sm">My Account</p>
+                <div className="relative tracking-tight text-sm">
+                    <ShoppingCartIcon className="text-black size-6" aria-label="Shopping Cart" />
+                   {items.length >0 && <span className="rounded-full bg-black absolute text-xs text-white px-1.5 top-3 left-4">{items.length}</span>}
+                </div>
             </div>
-
             <div className="flex md:hidden">
             <DropdownMenu >
         <DropdownMenuTrigger className="focus:outline-none">

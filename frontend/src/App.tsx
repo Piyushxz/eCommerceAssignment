@@ -34,7 +34,7 @@ function App() {
     <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay:0.4,duration:0.4, ease: "easeInOut" }}
+        transition={{ delay:0.8,duration:0.4, ease: "easeInOut" }}
     className=' flex flex-wrap w-[60vw] gap-6'>
       {
         allProducts.map(({title,id,price,images,category})=>(
