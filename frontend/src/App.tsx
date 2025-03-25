@@ -1,13 +1,12 @@
 
 import './App.css'
+import { DashboardNavbar } from './components/DashboardNavbar'
 
 function App() {
 
   return (
     <>
-      <div className=''>
-          hey
-      </div>
+      <DashboardNavbar/>
     </>
   )
 }
