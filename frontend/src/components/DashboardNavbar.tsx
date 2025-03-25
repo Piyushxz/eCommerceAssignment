@@ -1,11 +1,16 @@
 import { EyeIcon, HomeIcon, LogOut, ShoppingCartIcon } from "lucide-react"
 import {motion} from "motion/react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./DropDownMenu"
-import { useSelector } from "react-redux"
-
+import { useDispatch, useSelector } from "react-redux"
+import { setFilterCategory } from "@/features/todoSlice"
 export const DashboardNavbar = ()=>{
 
     const items = useSelector(state=>state.cartItems)
+
+
+    const dispatch = useDispatch()
+    const filterCategory = useSelector(state=>state.filterCategory)
+
     return(
         <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -16,11 +21,41 @@ export const DashboardNavbar = ()=>{
         <div className="w-[95vw] flex justify-between items-center">
 
             <div className="flex font-primary gap-6 items-center justify-center">
-                <h1 className="font-bold tracking-tighter text-lg">Shopi</h1>
-                <h1 className=" tracking-tight text-sm">All</h1>
-                <h1 className=" tracking-tight text-sm">Clothes</h1>
-                <h1 className=" tracking-tight text-sm">Electronics</h1>
-                <h1 className=" tracking-tight text-sm">Toys</h1>
+            <h1 className="font-bold tracking-tighter text-lg">Shopi</h1>
+                                <h1
+                                onClick={() => dispatch(setFilterCategory({ category: "all" }))}
+                                className={`tracking-tight text-sm cursor-pointer pb-1 ${
+                                    filterCategory === "all" ? "underline decoration-2" : ""
+                                }`}
+                                >
+                                All
+                                </h1>
+                                <h1
+                                onClick={() => dispatch(setFilterCategory({ category: "clothes" }))}
+                                className={`tracking-tight text-sm cursor-pointer pb-1 ${
+                                    filterCategory === "clothes" ? "underline decoration-2" : ""
+                                }`}
+                                >
+                                Clothes
+                                </h1>
+                                <h1
+                                onClick={() => dispatch(setFilterCategory({ category: "electronics" }))}
+                                className={`tracking-tight text-sm cursor-pointer pb-1 ${
+                                    filterCategory === "electronics" ? "underline decoration-2" : ""
+                                }`}
+                                >
+                                Electronics
+                                </h1>
+                                <h1
+                                onClick={() => dispatch(setFilterCategory({ category: "toys" }))}
+                                className={`tracking-tight text-sm cursor-pointer pb-1 ${
+                                    filterCategory === "toys" ? "underline decoration-2" : ""
+                                }`}
+                                >
+                                Toys
+                                </h1>
+
+
 
 
 

@@ -1,14 +1,18 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 
 export const getProducts = ()=>{
 
+    const filterCategory = useSelector(state=>state.filterCategory)
     const [loading,isLoading] = useState(true)
     const [allProducts,setAllProducts] = useState([])
 
+    const url = filterCategory === 'all'? 'https://api.escuelajs.co/api/v1/products' : `https://api.escuelajs.co/api/v1/products?categorySlug=${filterCategory}`
+    console.log(url)
     useEffect(()=>{
         (async()=>{
-            const response = await axios.get("https://api.escuelajs.co/api/v1/products",{
+            const response = await axios.get(url,{
                 params:{
                     limit:20,
                     offset:0
@@ -18,7 +22,7 @@ export const getProducts = ()=>{
             setAllProducts(response.data)
             isLoading(false)
         })()
-    },[])
+    },[filterCategory])
 
 
     return {loading,allProducts}

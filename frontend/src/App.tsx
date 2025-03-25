@@ -7,24 +7,33 @@ import { getProducts } from './hooks/getProducts'
 import { useSelector } from 'react-redux'
 import { motion} from "motion/react"
 import { AnimatePresence } from 'framer-motion'
+import { DescriptionModal } from './components/DescriptonModal'
 function App() {
   const {loading,allProducts} = getProducts()
 
   console.log(loading,allProducts)
 
+
   const ismodalOpen = useSelector(state => state.isCheckoutModalOpen);
+  const isDescriptionmodalOpen = useSelector(state => state. showDescriptionModal.value);
+
 
 
 
   return (
     <>
-
     <AnimatePresence>
     {
       ismodalOpen &&
         <CheckoutCard/>
       }
+
+
     </AnimatePresence>
+
+    <AnimatePresence >
+  {isDescriptionmodalOpen && <DescriptionModal />}
+</AnimatePresence>
 
       
       <DashboardNavbar/>
@@ -35,7 +44,7 @@ function App() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay:0.8,duration:0.4, ease: "easeInOut" }}
-    className=' flex flex-wrap w-[60vw] gap-6'>
+    className=' flex flex-wrap w-[90vw] gap-6 flex justify-center'>
       {
         allProducts.map(({title,id,price,images,category})=>(
                   //@ts-ignore
