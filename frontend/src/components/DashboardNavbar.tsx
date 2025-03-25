@@ -7,7 +7,7 @@ export const DashboardNavbar = ()=>{
         <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, ease: "easeInOut" }}
+        transition={{ duration:0.4, ease: "easeInOut" }}
         className="w-full fixed md:relative flex justify-center items-center border-b border-gray-400/30 z-49  py-4"
       >
         <div className="w-[95vw] flex justify-between items-center">
@@ -60,13 +60,13 @@ export const DashboardNavbar = ()=>{
         <DropdownMenuContent className="bg-[#191919] border-gray-600/40 z-100">
         <DropdownMenuItem 
      
-         className="w-full flex gap-1 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
+         className="w-full flex gap-2  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
                             <HomeIcon className="size-6 text-inherit"/>
                             <span className="font-primary font-normal text-md  tracking-tighter text-inherit ">Home</span>
                     
           </DropdownMenuItem>
                 <DropdownMenuItem 
-                 className="w-full flex gap-1 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
+                 className="w-full flex gap-2 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
                             <EyeIcon className="size-6 text-inherit"/>
                             <span className="font-primary font-normal text-md  tracking-tighter text-inherit ">Favourite</span>
                     
@@ -74,7 +74,7 @@ export const DashboardNavbar = ()=>{
                 <DropdownMenuSeparator
                  className="bg-gray-600/30" />
                 <DropdownMenuItem  
-                 className="w-full flex gap-1 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white hover:text-red-600 transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
+                 className="w-full flex gap-2 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white hover:text-red-600 transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
                             <LogOut className="size-6 text-inherit"/>
                             <span className="font-primary font-normal text-md tracking-tighter text-inherit ">Logout</span>
                     
