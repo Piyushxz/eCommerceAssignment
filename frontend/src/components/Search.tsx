@@ -1,7 +1,12 @@
 import {motion} from "motion/react"
 import { SearchIcon } from "lucide-react";
+import { getProducts } from "@/hooks/getProducts";
 
 export const Search = () => {
+
+    const {loading,allProducts} = getProducts()
+
+    console.log(loading,allProducts)
   return (
     <motion.div 
     initial={{ opacity: 0, y: 20 }}
