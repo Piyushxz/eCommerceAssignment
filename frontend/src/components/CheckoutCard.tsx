@@ -7,6 +7,8 @@ import { CheckoutCardItem } from "./CheckoutCardItem";
 export const CheckoutCard = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cartItems);
+  const cartPrice = useSelector((state) => state.cartPrice);
+
   
   const totalPrice = items.reduce((total, item) => total + item.props.cost, 0);
 
@@ -46,7 +48,7 @@ export const CheckoutCard = () => {
         <div className="p-4 border-t border-black/50 bg-white">
           <div className="flex justify-between text-lg font-semibold">
             <span className="tracking-tight">Total:</span>
-            <span>${totalPrice}</span>
+            <span>${cartPrice}</span>
           </div>
           <button
             className="mt-4 w-full bg-black text-white py-3 rounded-lg hover:bg-gray-900 transition"

@@ -1,4 +1,4 @@
-import { Eye, Info, Plus, ShoppingBag, ShoppingBasket, ShoppingCartIcon, View } from "lucide-react";
+import {  Info, ShoppingCartIcon} from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, openModal, showDescriptionModal } from "../features/todoSlice";
 import { toast } from "sonner";

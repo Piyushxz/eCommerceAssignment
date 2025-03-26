@@ -1,7 +1,7 @@
 import { Minus, Plus } from "lucide-react"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { filterCard } from "@/features/todoSlice";
+import { filterCard, updateCartPrice } from "@/features/todoSlice";
 
 export const CheckoutCardItem = (props:{
     img:string,
@@ -28,12 +28,15 @@ export const CheckoutCardItem = (props:{
                                     dispatch(filterCard({id:props.id}))
                                 }
                     setCount(c=>c-1)
+                    dispatch(updateCartPrice(-props.price))
                     
        
                 }}
                 className="px-2 text-black bg-red-500 rounded-lg size-6"/>
                 <h1>{count}</h1>
-                <Plus onClick={()=>setCount(c=>c+1)}
+                <Plus onClick={()=>{setCount(c=>c+1)
+                    dispatch(updateCartPrice(props.price))
+                }}
                  className="px-2 text-black bg-green-600 rounded-lg size-6"/>
             </div>
         </div>

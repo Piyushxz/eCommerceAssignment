@@ -12,6 +12,7 @@ const initialState ={
     isFilterModalOpen:false,
     searchKeyword:"",
     filterPrice:100,
+    cartPrice:0
 
 }
 
@@ -28,6 +29,7 @@ export const modalSlice = createSlice({
         },
         addToCart : (state,action)=>{
             state.cartItems.push(action.payload)
+            state.cartPrice =  state.cartItems.reduce((total, item) => total + item.props.cost, 0);
         },
         filterCard:(state,action)=>{
             state.cartItems = state.cartItems.filter((item)=>item.props.id !== action.payload.id)
@@ -51,6 +53,13 @@ export const modalSlice = createSlice({
         },
         setFilterPrice:(state,action)=>{
             state.filterPrice = action.payload
+        },
+        totalCartPrice:(state,action)=>{
+            state.cartPrice =  state.cartItems.reduce((total, item) => total + item.props.cost, 0);
+
+        },
+        updateCartPrice:(state,action)=>{
+            state.cartPrice = state.cartPrice + action.payload
         }
 
 
@@ -58,6 +67,6 @@ export const modalSlice = createSlice({
     }
 } )
 
-export const {toggleModal,openModal,addToCart,filterCard,setFilterCategory,showDescriptionModal,closeDescriptionModal,toggleFilterModal,setSearchKeyword,setFilterPrice} = modalSlice.actions
+export const {toggleModal,openModal,addToCart,filterCard,setFilterCategory,showDescriptionModal,closeDescriptionModal,toggleFilterModal,setSearchKeyword,setFilterPrice,updateCartPrice} = modalSlice.actions
 
 export default modalSlice.reducer
