@@ -17,19 +17,19 @@ Ensure you have **Node.js**, **npm**,  installed.
    ```sh
    git clone https://github.com/Piyushxz/eCommerceAssignment.git
    cd frontend
-2 **Install Dependencies**  
+2. **Install Dependencies**  
     
     npm install
 
 3. **Add .env**
     Create a .env file and all the environment variables from firebase as given in firbase.ts
 4. **Run Project**
-    
+    ```sh
     npm run dev
 
 ### **🔹 Docker Installation**
 1. **Clone the repository**  
-   
+   ```sh
    git clone https://github.com/yourusername/project-name.git
    cd frontend
 2. **Build the Image**
@@ -39,7 +39,7 @@ Ensure you have **Node.js**, **npm**,  installed.
     Create a .env file and all the environment variables from firebase as given in firbase.ts
 
 4. **Start the container**
-
+    ```sh
     docker run --env-file ./frontend/.env -p 5173:5173 ecommerce-app
 
 
