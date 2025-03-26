@@ -11,6 +11,9 @@ import { Dashboard } from './pages/dashboard'
 import { Layout } from './components/Layout'
 import { Orders } from './pages/orders'
 import { Account } from './pages/account'
+import { LandingPage } from './pages/landing'
+import Login from './pages/signin'
+import { Signup } from './pages/signup'
 function App() {
   const {loading,allProducts} = getProducts()
 
@@ -47,9 +50,14 @@ function App() {
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/my-orders' element={<Orders/>}/>
       <Route path='/my-account' element={<Account/>}/>
-
+\
 
       </Route>
+      <Route path='/' element={<LandingPage/>}/>
+      <Route path='/signin' element={<Login/>}/>
+      <Route path='/signup' element={<Signup/>}/>
+
+
     </Routes>
 
 
