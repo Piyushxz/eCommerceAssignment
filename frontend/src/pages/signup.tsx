@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
-
+import {toast} from "sonner"
 export const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -9,6 +9,7 @@ export const Signup = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
+    const laodId = toast.loading("Signing up")
     e.preventDefault();
   };
 
