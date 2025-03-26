@@ -9,6 +9,7 @@ export const getProducts = ()=>{
     const [loading,isLoading] = useState(true)
     const [allProducts,setAllProducts] = useState([])
 
+    // Change url based on category
     const url = filterCategory === 'all'? 'https://api.escuelajs.co/api/v1/products' : `https://api.escuelajs.co/api/v1/products?categorySlug=${filterCategory}`
     console.log(url)
     useEffect(()=>{

@@ -36,10 +36,13 @@ function App() {
   return (
     <>
     <AnimatePresence>
+        {/* Modal for checkout */}
     {
       ismodalOpen &&
         <CheckoutCard/>
       }
+        {/* Modal for items information */}
+
   {isDescriptionmodalOpen && <DescriptionModal />}
 
   {
@@ -56,14 +59,26 @@ function App() {
     
     <Routes >
       <Route element={<Layout/>}>
+      {/* dashboard page */}
       <Route path='/dashboard' element={<Dashboard/>}/>
+
+      {/* My Orders page */}
+
       <Route path='/my-orders' element={<Orders/>}/>
+       {/* My Account page */}
+
       <Route path='/my-account' element={<Account/>}/>
 \
 
       </Route>
+            {/* Landing/Home page */}
+
       <Route path='/' element={<LandingPage/>}/>
+            {/* Sign in page */}
+
       <Route path='/signin' element={<Login/>}/>
+            {/* Sign up page */}
+
       <Route path='/signup' element={<Signup/>}/>
 
 

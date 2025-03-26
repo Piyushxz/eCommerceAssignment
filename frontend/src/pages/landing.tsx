@@ -39,7 +39,7 @@ export const LandingPage = () => {
                 className="inline-flex gap-2 items-center justify-center border border-black text-black text-sm hover:bg-gray-100 transition-all duration-300 h-11 rounded-lg px-6 md:px-8 shadow-md"
               >
                 <PlayCircle className="size-4" />
-                Watch Demo
+                piyushsavale2@gmail.com
               </motion.button>
             </div>
           </div>

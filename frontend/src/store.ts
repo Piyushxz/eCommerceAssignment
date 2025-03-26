@@ -3,12 +3,10 @@ import modalReducer from "./features/todoSlice";
 
 export const store = configureStore({
   reducer: {
-    modal: modalReducer, // Wrap it inside an object
+    modal: modalReducer, 
   },
 });
 
-// Define RootState type
 export type RootState = ReturnType<typeof store.getState>;
 
-// Define AppDispatch type
 export type AppDispatch = typeof store.dispatch;

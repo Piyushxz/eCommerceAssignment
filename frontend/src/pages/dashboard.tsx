@@ -13,6 +13,8 @@ import { RootState } from '@/store'
 export const Dashboard = ()=>{
     const nav = useNavigate()
     useEffect(()=>{
+
+      //check if user is logged in
         const user = auth.currentUser;
 
         if (user) {
@@ -32,6 +34,7 @@ export const Dashboard = ()=>{
     
     
     
+      //filter function
       const filteredProducts = allProducts?.filter(({ title , category, price }:any) => {
         
         const matchesSearch = title.toLowerCase().includes(searchKeyword.toLowerCase()) || 
