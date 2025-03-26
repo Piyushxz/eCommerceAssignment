@@ -15,8 +15,7 @@ export const Login = () => {
     const loadId = toast.loading("Signing in...");
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+      await signInWithEmailAndPassword(auth, email, password);
       toast.success("Login successful! Redirecting...");
 
       navigate("/dashboard");

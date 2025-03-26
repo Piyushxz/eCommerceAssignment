@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleModal, togglePurchaseModal } from "../features/todoSlice";
 import { CheckoutCardItem } from "./CheckoutCardItem";
 import { toast } from "sonner";
+import { RootState } from "@/store";
 
 export const CheckoutCard = () => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.cartItems);
-  const cartPrice = useSelector((state) => state.cartPrice);
+  const items = useSelector((state:RootState) => state.modal.cartItems) as any;
+  const cartPrice = useSelector((state:RootState) => state.modal.cartPrice);
 
   
 
@@ -17,8 +18,8 @@ export const CheckoutCard = () => {
         toast.error("Cart is empty")
     }
     else{
-        dispatch(togglePurchaseModal(true))
-        dispatch(toggleModal(false))
+        dispatch(togglePurchaseModal())
+        dispatch(toggleModal())
     }
   }
 
@@ -34,14 +35,15 @@ export const CheckoutCard = () => {
         <div className="p-4 flex justify-between items-center border-b border-black/50">
           <h1 className="text-xl text-black tracking-tight font-semibold">Cart</h1>
           <X
-            onClick={() => dispatch(toggleModal(false))}
+            onClick={() => dispatch(toggleModal())}
             className="text-black size-8 p-1 rounded-lg bg-black/5 cursor-pointer"
           />
         </div>
 
         <div className="flex-1 flex flex-col overflow-y-auto p-4">
           {items.length > 0 ? (
-            items.map((item, index) => (
+            items.map((item:any, index:any) => (
+                
               <CheckoutCardItem
                 key={index}
                 id={item.props.id}

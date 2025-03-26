@@ -21,18 +21,22 @@ export const modalSlice = createSlice({
     name: 'modal',
     initialState,
     reducers: {
-        toggleModal: (state, action) => {
+        toggleModal: (state) => {
 
             state.isCheckoutModalOpen = !state.isCheckoutModalOpen
         },
-        openModal :(state,action)=>{
+        openModal :(state)=>{
             state.isCheckoutModalOpen = true
         },
         addToCart : (state,action)=>{
+            //@ts-ignore
             state.cartItems.push(action.payload)
+            //@ts-ignore
             state.cartPrice =  state.cartItems.reduce((total, item) => total + item.props.cost, 0); 
         },
         filterCard:(state,action)=>{
+        //@ts-ignore
+
             state.cartItems = state.cartItems.filter((item)=>item.props.id !== action.payload.id)
         },
         setFilterCategory:(state,action)=>{
@@ -42,11 +46,11 @@ export const modalSlice = createSlice({
             state.showDescriptionModal.value = true;
             state.showDescriptionModal.id = action.payload.id
         },
-        closeDescriptionModal:(state,action)=>{
+        closeDescriptionModal:(state)=>{
             state.showDescriptionModal.value = false;
             state.showDescriptionModal.id = 0
         },
-        toggleFilterModal:(state,action)=>{
+        toggleFilterModal:(state)=>{
             state.isFilterModalOpen = !state.isFilterModalOpen
         },
         setSearchKeyword:(state,action)=>{
@@ -55,14 +59,15 @@ export const modalSlice = createSlice({
         setFilterPrice:(state,action)=>{
             state.filterPrice = action.payload
         },
-        totalCartPrice:(state,action)=>{
+        totalCartPrice:(state)=>{
+            //@ts-ignore
             state.cartPrice =  state.cartItems.reduce((total, item) => total + item.props.cost, 0);
 
         },
         updateCartPrice:(state,action)=>{
             state.cartPrice = state.cartPrice + action.payload
         },
-        togglePurchaseModal:(state,action)=>{
+        togglePurchaseModal:(state)=>{
             state.isPurchaseModalOpen = !state.isPurchaseModalOpen
         }
 

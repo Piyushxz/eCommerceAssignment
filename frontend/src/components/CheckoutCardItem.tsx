@@ -2,6 +2,7 @@ import { Minus, Plus } from "lucide-react"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { filterCard, updateCartPrice } from "@/features/todoSlice";
+import { RootState } from "@/store";
 
 export const CheckoutCardItem = (props:{
     img:string,
@@ -9,7 +10,7 @@ export const CheckoutCardItem = (props:{
     price:string,
     id:string
 })=>{
-    const items = useSelector((state) => state.cartItems);
+    const items = useSelector((state:RootState) => state.modal.cartItems);
     console.log(items)
     const dispatch = useDispatch()
     const [count,setCount] = useState(1)

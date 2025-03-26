@@ -15,19 +15,20 @@ import { LandingPage } from './pages/landing'
 import Login from './pages/signin'
 import { Signup } from './pages/signup'
 import { Purchase } from './components/Purchasing'
+import { RootState } from './store'
+
 function App() {
   const {loading,allProducts} = getProducts()
 
   console.log(loading,allProducts)
 
 
-  const ismodalOpen = useSelector(state => state.isCheckoutModalOpen);
+  const ismodalOpen = useSelector((state:RootState) => state.modal.isCheckoutModalOpen);
+  const isFilterModalOpen = useSelector((state:RootState) => state.modal.isFilterModalOpen);
 
-  const isFilterModalOpen = useSelector(state => state.isFilterModalOpen);
 
-  const isDescriptionmodalOpen = useSelector(state => state.showDescriptionModal.value);
-  const isPurchaseModalOpen = useSelector(state => state.isPurchaseModalOpen);
-
+  const isDescriptionmodalOpen = useSelector((state:RootState) => state.modal.showDescriptionModal.value);
+  const isPurchaseModalOpen = useSelector((state:RootState)=> state.modal.isPurchaseModalOpen);
 
 
 

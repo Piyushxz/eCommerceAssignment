@@ -2,16 +2,17 @@ import { setFilterCategory, setFilterPrice, toggleFilterModal } from "@/features
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { Slider } from "./ui/slider";
+import { RootState } from "@/store";
 
 export const FilterModal = () => {
   const dispatch = useDispatch();
-  const filterCategory = useSelector((state) => state.filterCategory);
+  const filterCategory = useSelector((state:RootState) => state.modal.filterCategory);
 
   console.log(filterCategory)
 
   return (
     <div
-      onClick={() => dispatch(toggleFilterModal(false))}
+      onClick={() => dispatch(toggleFilterModal())}
       className="fixed inset-0 flex  justify-center bg-black/50 z-50"
     >
       <motion.div
@@ -86,7 +87,7 @@ export const FilterModal = () => {
         </div>
 
         <div className="flex justify-between pt-6">
-          <button onClick={() =>{ dispatch(toggleFilterModal(false))
+          <button onClick={() =>{ dispatch(toggleFilterModal())
 
             dispatch(setFilterCategory({category:'all'}))
             dispatch(setFilterPrice(100))
@@ -96,7 +97,7 @@ export const FilterModal = () => {
             Clear All
           </button>
           <button 
-          onClick={() =>{ dispatch(toggleFilterModal(false))
+          onClick={() =>{ dispatch(toggleFilterModal())
 
         
           }}

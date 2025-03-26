@@ -2,6 +2,7 @@ import {  Info, ShoppingCartIcon} from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, openModal, showDescriptionModal } from "../features/todoSlice";
 import { toast } from "sonner";
+import { RootState } from "@/store";
 
 export const Card = (props: {
     img: string;
@@ -11,7 +12,7 @@ export const Card = (props: {
     id: string;
 }) => {
     const dispatch = useDispatch();
-    const items = useSelector((state) => state.cartItems);
+    const items = useSelector((state:RootState) => state.modal.cartItems);
 
     return (
         <div className="relative font-primary tracking-tighter w-80 h-auto rounded-lg shadow-lg transition-transform duration-200 transform hover:scale-105 bg-background h-[400px]">
@@ -51,9 +52,9 @@ export const Card = (props: {
         <button
             className="cursor-pointer  py-2 px-4 bg-yellow-400 flex items-center gap-2 rounded-lg shadow-md focus:outline-none"
             onClick={() => {
-                dispatch(openModal(true));
+                dispatch(openModal());
 
-                const isProductInCart = items.some((element) => element.props.id === props.id);
+                const isProductInCart = items.some((element:any) => element.props.id === props.id);
 
                 if (isProductInCart) {
                     toast.error("Product already exists in cart!");

@@ -3,13 +3,14 @@ import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { X } from "lucide-react";
 import axios from "axios";
-import { closeDescriptionModal } from "@/features/todoSlice";
+import { closeDescriptionModal, showDescriptionModal } from "@/features/todoSlice";
+import { RootState } from "@/store";
 export const DescriptionModal = () => {
     const dispatch = useDispatch();
-    const id = useSelector(state => state.showDescriptionModal.id);
-    const isDescriptionModalOpen = useSelector(state => state.showDescriptionModal.value);
+    const id = useSelector((state:RootState) => state.modal.showDescriptionModal.id);
+    const isDescriptionModalOpen = useSelector((state:RootState) => state.modal.showDescriptionModal.value);
 
-    const [product, setProduct] = useState(null);
+    const [product, setProduct] = useState<any>(null);
 
     useEffect(() => {
         if (id) {
@@ -28,7 +29,7 @@ export const DescriptionModal = () => {
             exit={{ opacity: 0, scale: 0.9 }} 
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="fixed inset-0 flex items-center justify-center bg-black/70 z-50"
-            onClick={() => dispatch(toggleDescriptionModal(false))}
+            onClick={() => dispatch(showDescriptionModal(false))}
         >
             <div 
                 className="w-96 font-primary bg-[#121212] border border-gray-700 shadow-2xl rounded-xl p-5 relative"
@@ -36,7 +37,7 @@ export const DescriptionModal = () => {
             >
                 <button 
                     className="absolute top-3 right-3 text-gray-300 hover:text-white p-2 rounded-full transition duration-200 bg-gray-800 hover:bg-gray-700"
-                    onClick={() => dispatch(closeDescriptionModal(false))}
+                    onClick={() => dispatch(closeDescriptionModal())}
                 >
                     <X size={22} />
                 </button>

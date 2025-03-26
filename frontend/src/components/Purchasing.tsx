@@ -1,4 +1,4 @@
-import { addToCart, toggleModal, togglePurchaseModal } from "@/features/todoSlice";
+import {  togglePurchaseModal } from "@/features/todoSlice";
 import { useEffect, useState } from "react";
 import { OrbitProgress } from "react-loading-indicators";
 import { useDispatch } from "react-redux";
@@ -8,7 +8,7 @@ export const Purchase = () => {
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
     const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(togglePurchaseModal(false))
+    dispatch(togglePurchaseModal())
     const timer = setTimeout(() =>{ setPurchaseCompleted(true)
         toast.success("Purchase completed")
     }, 5000);
@@ -17,7 +17,7 @@ export const Purchase = () => {
   }, []);
 
   return (
-    <div onClick={()=> purchaseCompleted && dispatch(togglePurchaseModal(false))} className="font-primary tracking-tighter fixed z-50 inset-0 flex items-center justify-center bg-black/70">
+    <div onClick={()=> purchaseCompleted && dispatch(togglePurchaseModal())} className="font-primary tracking-tighter fixed z-50 inset-0 flex items-center justify-center bg-black/70">
       {purchaseCompleted ? (
         <div 
         className="text-center animate-fadeIn bg-white/80 px-6 py-4 rounded-lg shadow-lg">

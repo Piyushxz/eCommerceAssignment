@@ -8,6 +8,7 @@ import { auth } from "../firebase";
 
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { RootState } from '@/store'
 
 export const Dashboard = ()=>{
     const nav = useNavigate()
@@ -25,13 +26,14 @@ export const Dashboard = ()=>{
       console.log(loading,allProducts)
     
     
-      const searchKeyword = useSelector(state => state.searchKeyword);
+      const searchKeyword = useSelector((state:RootState) => state.modal.searchKeyword);
     
-      const filterPrice = useSelector(state=> state.filterPrice)
+      const filterPrice = useSelector((state:RootState)=> state.modal.filterPrice)
     
     
     
-      const filteredProducts = allProducts?.filter(({ title, category, price }) => {
+      const filteredProducts = allProducts?.filter(({ title , category, price }:any) => {
+        
         const matchesSearch = title.toLowerCase().includes(searchKeyword.toLowerCase()) || 
                               category?.name?.toLowerCase().includes(searchKeyword.toLowerCase());
       

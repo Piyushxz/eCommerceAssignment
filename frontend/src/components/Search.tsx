@@ -23,7 +23,7 @@ export const Search = () => {
             placeholder="Search Anything"
           />
         </div>
-        <button onClick={()=>dispatch(toggleFilterModal(true))}
+        <button onClick={()=>dispatch(toggleFilterModal())}
          className="hover:opacity-70 p-1 rounded-lg border border-black/15">
             <SlidersHorizontalIcon className="text-black size-8"/>
         </button>

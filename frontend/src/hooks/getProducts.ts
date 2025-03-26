@@ -1,10 +1,11 @@
+import { RootState } from "@/store"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 
 export const getProducts = ()=>{
 
-    const filterCategory = useSelector(state=>state.filterCategory)
+    const filterCategory = useSelector((state:RootState)=>state.modal.filterCategory)
     const [loading,isLoading] = useState(true)
     const [allProducts,setAllProducts] = useState([])
 

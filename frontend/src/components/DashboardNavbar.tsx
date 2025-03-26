@@ -5,15 +5,16 @@ import { useDispatch, useSelector } from "react-redux"
 import { openModal, setFilterCategory } from "@/features/todoSlice"
 import { useNavigate } from "react-router-dom"
 import { auth } from "../firebase";
+import { RootState } from "@/store"
 
 export const DashboardNavbar = ()=>{
 
     const navigate = useNavigate()
-    const items = useSelector(state=>state.cartItems)
+    const items = useSelector((state:RootState)=>state.modal.cartItems) ?? []
 
 
     const dispatch = useDispatch()
-    const filterCategory = useSelector(state=>state.filterCategory)
+    const filterCategory = useSelector((state:RootState)=>state.modal.filterCategory)
 
     const user = auth.currentUser
 
@@ -77,7 +78,7 @@ export const DashboardNavbar = ()=>{
                 className="cursor-pointer tracking-tight text-sm">My Orders</p>
                 <p onClick={()=>navigate('/my-account')}
                  className="cursor-pointer tracking-tight text-sm">My Account</p>
-                <div onClick={()=>dispatch(openModal(true))}
+                <div onClick={()=>dispatch(openModal())}
                  className="relative tracking-tight text-sm">
                     <ShoppingCartIcon className="text-black size-6" aria-label="Shopping Cart" />
                    {items.length >0 && <span className="rounded-full bg-black absolute text-xs text-white px-1.5 top-3 left-4">{items.length}</span>}
@@ -121,7 +122,7 @@ export const DashboardNavbar = ()=>{
                     
                 </DropdownMenuItem>
 
-                <DropdownMenuItem onClick={()=>dispatch(openModal(true))}
+                <DropdownMenuItem onClick={()=>dispatch(openModal())}
                  className="w-full flex gap-2 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
                             <ShoppingCartIcon className="size-6 text-inherit"/>
                             <span className="font-primary font-normal text-md  tracking-tighter text-inherit ">Cart</span>
