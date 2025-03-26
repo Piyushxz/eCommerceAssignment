@@ -4,9 +4,22 @@ import { Card } from '@/components/Card'
 import { Search } from '@/components/Search'
 import { getProducts } from '@/hooks/getProducts'
 import { DashboardNavbar } from '@/components/DashboardNavbar'
+import { auth } from "../firebase";
+
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const Dashboard = ()=>{
+    const nav = useNavigate()
+    useEffect(()=>{
+        const user = auth.currentUser;
 
+        if (user) {
+          return
+        } else {
+            nav("/")
+        }
+    },[])
       const {loading,allProducts} = getProducts()
     
       console.log(loading,allProducts)

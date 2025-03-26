@@ -1,9 +1,11 @@
-import { EyeIcon, HomeIcon, LogOut, ShoppingCartIcon, User, Wallet2Icon } from "lucide-react"
+import {  HomeIcon, LogOut, ShoppingCartIcon, User, Wallet2Icon } from "lucide-react"
 import {motion} from "motion/react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./DropDownMenu"
 import { useDispatch, useSelector } from "react-redux"
 import { openModal, setFilterCategory } from "@/features/todoSlice"
 import { useNavigate } from "react-router-dom"
+import { auth } from "../firebase";
+
 export const DashboardNavbar = ()=>{
 
     const navigate = useNavigate()
@@ -12,6 +14,8 @@ export const DashboardNavbar = ()=>{
 
     const dispatch = useDispatch()
     const filterCategory = useSelector(state=>state.filterCategory)
+
+    const user = auth.currentUser
 
     return(
         <motion.div
@@ -66,7 +70,9 @@ export const DashboardNavbar = ()=>{
 
             </div>
             <div className="flex font-primary gap-6 items-center hidden md:flex">
-                <p className=" cursor-pointer tracking-tight text-sm">user@gmail.com</p>
+                <p className=" cursor-pointer tracking-tight text-sm">{
+                    user ? user.email : "user"
+                    } </p>
                 <p onClick={()=>navigate('/my-orders')}
                 className="cursor-pointer tracking-tight text-sm">My Orders</p>
                 <p onClick={()=>navigate('/my-account')}

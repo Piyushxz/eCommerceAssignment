@@ -15,7 +15,8 @@ export const Login = () => {
     const loadId = toast.loading("Signing in...");
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
       toast.success("Login successful! Redirecting...");
 
       navigate("/dashboard");
@@ -86,7 +87,7 @@ export const Login = () => {
               onClick={handleDemoLogin}
               className="w-full font-primary text-black py-3.5 rounded-md font-semibold bg-gray-300 hover:bg-gray-400 transition-all"
             >
-              Demo Login
+              Set Test Credentials
             </button>
           </div>
         </motion.form>
