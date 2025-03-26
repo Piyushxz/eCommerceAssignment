@@ -8,6 +8,9 @@ import { DescriptionModal } from './components/DescriptonModal'
 import { FilterModal } from './components/FilterModal'
 import { Route, Routes } from 'react-router-dom'
 import { Dashboard } from './pages/dashboard'
+import { Layout } from './components/Layout'
+import { Orders } from './pages/orders'
+import { Account } from './pages/account'
 function App() {
   const {loading,allProducts} = getProducts()
 
@@ -39,8 +42,14 @@ function App() {
     </AnimatePresence>
 
     
-    <Routes>
+    <Routes >
+      <Route element={<Layout/>}>
       <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/my-orders' element={<Orders/>}/>
+      <Route path='/my-account' element={<Account/>}/>
+
+
+      </Route>
     </Routes>
 
 

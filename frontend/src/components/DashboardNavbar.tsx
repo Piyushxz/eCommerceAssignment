@@ -3,8 +3,10 @@ import {motion} from "motion/react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./DropDownMenu"
 import { useDispatch, useSelector } from "react-redux"
 import { openModal, setFilterCategory } from "@/features/todoSlice"
+import { useNavigate } from "react-router-dom"
 export const DashboardNavbar = ()=>{
 
+    const navigate = useNavigate()
     const items = useSelector(state=>state.cartItems)
 
 
@@ -21,7 +23,8 @@ export const DashboardNavbar = ()=>{
         <div className="w-[95vw] flex justify-between items-center">
 
             <div className="flex font-primary gap-6 items-center justify-center">
-            <h1 className="font-bold tracking-tighter text-lg">Shopi</h1>
+            <h1 onClick={()=>navigate('/dashboard')}
+             className=" cursor-pointer font-bold tracking-tighter text-lg">xShopify</h1>
                                 <h1
                                 onClick={() => dispatch(setFilterCategory({ category: "all" }))}
                                 className={`tracking-tight text-sm cursor-pointer pb-1 ${
@@ -63,9 +66,11 @@ export const DashboardNavbar = ()=>{
 
             </div>
             <div className="flex font-primary gap-6 items-center hidden md:flex">
-                <p className="tracking-tight text-sm">user@gmail.com</p>
-                <p className="tracking-tight text-sm">My Orders</p>
-                <p className="tracking-tight text-sm">My Account</p>
+                <p className=" cursor-pointer tracking-tight text-sm">user@gmail.com</p>
+                <p onClick={()=>navigate('/my-orders')}
+                className="cursor-pointer tracking-tight text-sm">My Orders</p>
+                <p onClick={()=>navigate('/my-account')}
+                 className="cursor-pointer tracking-tight text-sm">My Account</p>
                 <div onClick={()=>dispatch(openModal(true))}
                  className="relative tracking-tight text-sm">
                     <ShoppingCartIcon className="text-black size-6" aria-label="Shopping Cart" />
@@ -95,6 +100,7 @@ export const DashboardNavbar = ()=>{
         </DropdownMenuTrigger>
         <DropdownMenuContent className="bg-[#191919] border-gray-600/40 z-100 w-[150px]">
         <DropdownMenuItem 
+        onClick={()=>navigate('/my-account')}
                  className="w-full flex gap-2 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
                             <User className="size-6 text-inherit"/>
                             <span className="font-primary font-normal text-md  tracking-tighter text-inherit ">My Account</span>
@@ -102,6 +108,7 @@ export const DashboardNavbar = ()=>{
                 </DropdownMenuItem>
 
                 <DropdownMenuItem 
+                onClick={()=>navigate('/my-orders')}
                  className="w-full flex gap-2 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white  transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
                             <Wallet2Icon className="size-6 text-inherit"/>
                             <span className="font-primary font-normal text-md  tracking-tighter text-inherit ">My Orders</span>
