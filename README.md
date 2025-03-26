@@ -24,6 +24,7 @@ Ensure you have **Node.js**, **npm**,  installed.
 3. **Add .env**
     Create a .env file and all the environment variables from firebase as given in firbase.ts
 4. **Run Project**
+
     ```sh
     npm run dev
 
@@ -33,7 +34,7 @@ Ensure you have **Node.js**, **npm**,  installed.
    git clone https://github.com/yourusername/project-name.git
    cd frontend
 2. **Build the Image**
-    
+    ```sh
     docker build -t ecommerce-app .
 3. **Add .env**
     Create a .env file and all the environment variables from firebase as given in firbase.ts
