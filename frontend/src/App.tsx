@@ -16,11 +16,23 @@ function App() {
 
 
   const ismodalOpen = useSelector(state => state.isCheckoutModalOpen);
+  const searchKeyword = useSelector(state => state.searchKeyword);
+
   const isFilterModalOpen = useSelector(state => state.isFilterModalOpen);
 
   const isDescriptionmodalOpen = useSelector(state => state. showDescriptionModal.value);
+  const filterPrice = useSelector(state=> state.filterPrice)
 
 
+
+  const filteredProducts = allProducts?.filter(({ title, category, price }) => {
+    const matchesSearch = title.toLowerCase().includes(searchKeyword.toLowerCase()) || 
+                          category?.name?.toLowerCase().includes(searchKeyword.toLowerCase());
+  
+    const matchesPrice = Number(price) <= Number(filterPrice);
+  
+    return matchesSearch && matchesPrice;
+  }) ?? [];
 
 
   return (
@@ -44,14 +56,14 @@ function App() {
       <DashboardNavbar/>
       <Search/>
 
-    <section className='flex w-full justify-center'>
+    <section className='flex w-full justify-center '>
     <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay:0.8,duration:0.4, ease: "easeInOut" }}
-    className=' flex flex-wrap w-[90vw] gap-6 flex justify-center'>
+    className=' flex flex-wrap w-[90vw] gap-6 flex '>
       {
-        allProducts.map(({title,id,price,images,category})=>(
+        filteredProducts.map(({title,id,price,images,category})=>(
                   //@ts-ignore
 
           <Card id={id} key={id} name={title} cost={price} img={images[0]} category={category.name} />

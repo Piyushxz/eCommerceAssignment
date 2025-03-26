@@ -9,7 +9,9 @@ const initialState ={
     cartItems:[],
     filterCategory:'all',
     showDescriptionModal:{value:false,id:1},
-    isFilterModalOpen:false
+    isFilterModalOpen:false,
+    searchKeyword:"",
+    filterPrice:100,
 
 }
 
@@ -43,12 +45,19 @@ export const modalSlice = createSlice({
         },
         toggleFilterModal:(state,action)=>{
             state.isFilterModalOpen = !state.isFilterModalOpen
+        },
+        setSearchKeyword:(state,action)=>{
+            state.searchKeyword = action.payload
+        },
+        setFilterPrice:(state,action)=>{
+            state.filterPrice = action.payload
         }
+
 
 
     }
 } )
 
-export const {toggleModal,openModal,addToCart,filterCard,setFilterCategory,showDescriptionModal,closeDescriptionModal,toggleFilterModal} = modalSlice.actions
+export const {toggleModal,openModal,addToCart,filterCard,setFilterCategory,showDescriptionModal,closeDescriptionModal,toggleFilterModal,setSearchKeyword,setFilterPrice} = modalSlice.actions
 
 export default modalSlice.reducer
