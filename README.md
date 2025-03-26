@@ -20,7 +20,10 @@ Ensure you have **Node.js**, **npm**,  installed.
 2 **Install Dependencies**  
     ```sh
     npm install
+
 3  **Run Project**
+    ```sh
+    npm run dev
 
 ### **🔹 Docker Installation**
 1. **Clone the repository**  
@@ -34,7 +37,7 @@ Ensure you have **Node.js**, **npm**,  installed.
 3. **Start the container**
     ```sh
     docker run -p 5173:5173 ecommerce-app
-    
+
 
 
 
