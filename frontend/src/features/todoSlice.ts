@@ -12,7 +12,8 @@ const initialState ={
     isFilterModalOpen:false,
     searchKeyword:"",
     filterPrice:100,
-    cartPrice:0
+    cartPrice:0,
+    isPurchaseModalOpen:false
 
 }
 
@@ -29,7 +30,7 @@ export const modalSlice = createSlice({
         },
         addToCart : (state,action)=>{
             state.cartItems.push(action.payload)
-            state.cartPrice =  state.cartItems.reduce((total, item) => total + item.props.cost, 0);
+            state.cartPrice =  state.cartItems.reduce((total, item) => total + item.props.cost, 0); 
         },
         filterCard:(state,action)=>{
             state.cartItems = state.cartItems.filter((item)=>item.props.id !== action.payload.id)
@@ -60,6 +61,9 @@ export const modalSlice = createSlice({
         },
         updateCartPrice:(state,action)=>{
             state.cartPrice = state.cartPrice + action.payload
+        },
+        togglePurchaseModal:(state,action)=>{
+            state.isPurchaseModalOpen = !state.isPurchaseModalOpen
         }
 
 
@@ -67,6 +71,6 @@ export const modalSlice = createSlice({
     }
 } )
 
-export const {toggleModal,openModal,addToCart,filterCard,setFilterCategory,showDescriptionModal,closeDescriptionModal,toggleFilterModal,setSearchKeyword,setFilterPrice,updateCartPrice} = modalSlice.actions
+export const {toggleModal,openModal,addToCart,filterCard,setFilterCategory,showDescriptionModal,closeDescriptionModal,toggleFilterModal,togglePurchaseModal,setSearchKeyword,setFilterPrice,updateCartPrice} = modalSlice.actions
 
 export default modalSlice.reducer

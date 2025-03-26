@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModal } from "../features/todoSlice";
+import { toggleModal, togglePurchaseModal } from "../features/todoSlice";
 import { CheckoutCardItem } from "./CheckoutCardItem";
+import { toast } from "sonner";
 
 export const CheckoutCard = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,16 @@ export const CheckoutCard = () => {
   const cartPrice = useSelector((state) => state.cartPrice);
 
   
-  const totalPrice = items.reduce((total, item) => total + item.props.cost, 0);
+
+  const handleCheckoutOrder = ()=>{
+    if(items.length < 1){
+        toast.error("Cart is empty")
+    }
+    else{
+        dispatch(togglePurchaseModal(true))
+        dispatch(toggleModal(false))
+    }
+  }
 
   return (
     <div className="font-primary fixed bottom-0 right-0 z-10">
@@ -51,6 +61,7 @@ export const CheckoutCard = () => {
             <span>${cartPrice}</span>
           </div>
           <button
+          onClick={handleCheckoutOrder}
             className="mt-4 w-full bg-black text-white py-3 rounded-lg hover:bg-gray-900 transition"
           >
             Checkout

@@ -14,6 +14,7 @@ import { Account } from './pages/account'
 import { LandingPage } from './pages/landing'
 import Login from './pages/signin'
 import { Signup } from './pages/signup'
+import { Purchase } from './components/Purchasing'
 function App() {
   const {loading,allProducts} = getProducts()
 
@@ -24,7 +25,9 @@ function App() {
 
   const isFilterModalOpen = useSelector(state => state.isFilterModalOpen);
 
-  const isDescriptionmodalOpen = useSelector(state => state. showDescriptionModal.value);
+  const isDescriptionmodalOpen = useSelector(state => state.showDescriptionModal.value);
+  const isPurchaseModalOpen = useSelector(state => state.isPurchaseModalOpen);
+
 
 
 
@@ -42,6 +45,11 @@ function App() {
       isFilterModalOpen && <FilterModal/>
     }
 
+  {/* Modal for processing order */}
+    {
+      
+      isPurchaseModalOpen && <Purchase/>
+    }
     </AnimatePresence>
 
     
