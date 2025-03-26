@@ -14,32 +14,32 @@ xShopify is a eCommerce application built using FakeAPI : https://fakeapi.platzi
 Ensure you have **Node.js**, **npm**,  installed.
 
 1. **Clone the repository**  
-   ```sh
+   
    git clone https://github.com/yourusername/project-name.git
    cd frontend
 2 **Install Dependencies**  
-    ```sh
+    
     npm install
 
 3. **Add .env**
     Create a .env file and all the environment variables from firebase as given in firbase.ts
 4. **Run Project**
-    ```sh
+    
     npm run dev
 
 ### **🔹 Docker Installation**
 1. **Clone the repository**  
-   ```sh
+   
    git clone https://github.com/yourusername/project-name.git
    cd frontend
 2. **Build the Image**
-    ```sh
+    
     docker build -t ecommerce-app .
 3. **Add .env**
     Create a .env file and all the environment variables from firebase as given in firbase.ts
 
 4. **Start the container**
-    ```sh
-docker run --env-file ./frontend/.env -p 5173:5173 ecommerce-app
+
+    docker run --env-file ./frontend/.env -p 5173:5173 ecommerce-app
 
 
