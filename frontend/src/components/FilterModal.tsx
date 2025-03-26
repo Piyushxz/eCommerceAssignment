@@ -20,14 +20,21 @@ export const FilterModal = () => {
         exit={{ opacity: 0, y: -20 }}
         transition={{ type: "spring", stiffness: 200, bounce: 0.3, mass: 0.1, duration: 0.8 }}
         onClick={(e) => e.stopPropagation()}
-        className="w-80 p-6 rounded-lg h-70 mt-[100px] bg-white shadow-lg font-primary tracking-tight"
+        className="w-80 p-6 rounded-lg h-72 mt-[100px] bg-white shadow-lg font-primary tracking-tight"
       >
         <h1 className="font-semibold text-2xl mb-4">Filter</h1>
 
         <div className="flex flex-col gap-3">
           <h2 className="font-semibold text-lg">Price</h2>
+
+          <div className="flex gap-1">
+            <span className="sm"> $1</span>
           <Slider onValueChange={(value) => dispatch(setFilterPrice(value[0]))}
            className="w-full" defaultValue={[33]} max={100} step={1} />
+            <span className="sm"> $100</span>
+
+          </div>
+
         </div>
 
         <div className="flex flex-col gap-3 mt-4">
@@ -79,10 +86,21 @@ export const FilterModal = () => {
         </div>
 
         <div className="flex justify-between pt-6">
-          <button className="bg-white py-2 px-6 font-semibold text-sm border rounded-lg hover:bg-gray-100">
+          <button onClick={() =>{ dispatch(toggleFilterModal(false))
+
+            dispatch(setFilterCategory({category:'all'}))
+            dispatch(setFilterPrice(100))
+
+          }}
+           className="bg-white py-2 px-6 font-semibold text-sm border rounded-lg hover:bg-gray-100">
             Clear All
           </button>
-          <button className="bg-black text-white py-2 px-6 font-semibold text-sm rounded-lg hover:bg-gray-900">
+          <button 
+          onClick={() =>{ dispatch(toggleFilterModal(false))
+
+        
+          }}
+          className="bg-black text-white py-2 px-6 font-semibold text-sm rounded-lg hover:bg-gray-900">
             Apply
           </button>
         </div>

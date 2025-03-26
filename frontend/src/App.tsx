@@ -61,8 +61,14 @@ function App() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay:0.8,duration:0.4, ease: "easeInOut" }}
-    className=' flex flex-wrap w-[90vw] gap-6 flex '>
+    className=' flex flex-wrap w-[90vw] gap-6 flex ml-6 '>
       {
+
+        filteredProducts.length === 0 ? 
+        <div className='flex justify-center w-full font-primary tracking-tighter '>
+          <h1 className='font-semibold text-xl'>No Products Found.</h1>
+        </div>
+        :
         filteredProducts.map(({title,id,price,images,category})=>(
                   //@ts-ignore
 
