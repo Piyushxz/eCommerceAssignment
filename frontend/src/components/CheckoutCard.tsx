@@ -8,7 +8,6 @@ export const CheckoutCard = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cartItems);
   
-  // Calculate total cost
   const totalPrice = items.reduce((total, item) => total + item.props.cost, 0);
 
   return (

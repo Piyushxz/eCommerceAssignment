@@ -7,7 +7,6 @@ export const LandingPage = () => {
 
   return (
     <>
-      {/* Main Section */}
       <div className="w-screen h-full bg-white flex justify-center items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
-import {toast} from "sonner"
+import { toast } from "sonner";
+import { auth, createUserWithEmailAndPassword } from "../firebase"; 
+
 export const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -9,8 +11,22 @@ export const Signup = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    const laodId = toast.loading("Signing up")
     e.preventDefault();
+    const loadId = toast.loading("Signing up...");
+
+    try {
+
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      toast.success("Signup successful!");
+      
+      navigate("/signin"); 
+    } catch (error) {
+      toast.error("could not signup");
+    }
+    finally{
+        toast.dismiss(loadId)
+    }
   };
 
   return (

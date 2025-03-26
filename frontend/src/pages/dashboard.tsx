@@ -12,12 +12,8 @@ export const Dashboard = ()=>{
       console.log(loading,allProducts)
     
     
-      const ismodalOpen = useSelector(state => state.isCheckoutModalOpen);
       const searchKeyword = useSelector(state => state.searchKeyword);
     
-      const isFilterModalOpen = useSelector(state => state.isFilterModalOpen);
-    
-      const isDescriptionmodalOpen = useSelector(state => state. showDescriptionModal.value);
       const filterPrice = useSelector(state=> state.filterPrice)
     
     
