@@ -14,8 +14,8 @@ xShopify is a eCommerce application built using FakeAPI : https://fakeapi.platzi
 Ensure you have **Node.js**, **npm**,  installed.
 
 1. **Clone the repository**  
-   
-   git clone https://github.com/yourusername/project-name.git
+   ```sh
+   git clone https://github.com/Piyushxz/eCommerceAssignment.git
    cd frontend
 2 **Install Dependencies**  
     
