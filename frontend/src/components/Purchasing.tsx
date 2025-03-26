@@ -8,7 +8,6 @@ export const Purchase = () => {
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
     const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(togglePurchaseModal())
     const timer = setTimeout(() =>{ setPurchaseCompleted(true)
         toast.success("Purchase completed")
     }, 5000);
