@@ -85,6 +85,8 @@ export const DashboardNavbar = ()=>{
                 </div>
             </div>
             <div className="flex md:hidden">
+
+               {/* { DropDown for mobile view} */}
             <DropdownMenu >
         <DropdownMenuTrigger className="focus:outline-none">
         <div className="flex size-10 cursor-pointer items-center justify-center rounded-full bg-gradient-to-b from-black/40 to-black/70">
@@ -139,7 +141,7 @@ export const DashboardNavbar = ()=>{
 
                 <DropdownMenuSeparator
                  className="bg-gray-600/30" />
-                <DropdownMenuItem  
+                <DropdownMenuItem  onClick={()=>navigate("/")}
                  className="w-full flex gap-2 w-full  rounded-sm px-2 py-1.5 text-md outline-none text-white hover:text-red-600 transition-colors  hover:bg-gray-800 rounded-lg transition-all ease-in-out cursor-pointer">
                             <LogOut className="size-6 text-inherit"/>
                             <span className="font-primary font-normal text-md tracking-tighter text-inherit ">Logout</span>
