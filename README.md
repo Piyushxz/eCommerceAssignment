@@ -4,7 +4,7 @@
 
 **Tech Stack**: ReactJS,Typescript,Tailwind CSS , Redux ToolKit ,Firebase
 
-xShopify is a eCommerce application built using FakeAPI : https://fakeapi.platzi.com/en. It includes search , filter as well as login/signup functionality . I have also have cart functionality where user can checkout their products in the cart . 
+xShopify is a eCommerce application built using FakeAPI : https://fakeapi.platzi.com/en. It includes search , filter as well as login/signup functionality . I have also added  cart functionality where user can checkout their products in the cart . 
 
 
 
