@@ -71,9 +71,16 @@ export const DashboardNavbar = ()=>{
 
             </div>
             <div className="flex font-primary gap-6 items-center hidden md:flex">
-                <p className=" cursor-pointer tracking-tight text-sm">{
-                    user ? user.email : "user"
-                    } </p>
+            <div className="relative group">
+                    <p className="cursor-pointer tracking-tight text-sm">{user ? user.email : "user"}</p>
+                    {user && (
+                        <div onClick={()=>navigate("/")}
+                        className=" cursor-pointer absolute left-1/2 transform -translate-x-1/2 flex gap-2 items-center rounded-lg  mt-1 w-max px-4 py-2 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <LogOut className="size-5 text-inherit"/>
+                                        <span className="font-primary font-normal text-lg tracking-tighter text-inherit ">Logout</span>
+                        </div>
+                    )}
+            </div>
                 <p onClick={()=>navigate('/my-orders')}
                 className="cursor-pointer tracking-tight text-sm">My Orders</p>
                 <p onClick={()=>navigate('/my-account')}
